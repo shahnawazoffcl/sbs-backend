@@ -10,5 +10,4 @@ public interface BikeRepairService {
 
     String processBooking(BikeRepair service);
 
-    BikeRepair bookService(BikeRepair service);
 }

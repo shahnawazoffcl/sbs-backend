@@ -13,11 +13,11 @@ import com.twilio.rest.api.v2010.account.Message;
 @Service
 public class WhatsappMessageServiceImpl implements SendWhatsappMessageService {
 
-//    @Value("${twilio.authToken}")
-    private String AUTH_TOKEN = "YOUR_AUTH";
+    @Value("${twilio.authToken}")
+    private String AUTH_TOKEN;
 
-//    @Value("${twilio.accountSid}")
-    private String ACCOUNT_SID = "SID";
+    @Value("${twilio.accountSid}")
+    private String ACCOUNT_SID;
 
     @Value("${twilio.from}")
     private String WHATSAPP_NUMBER;
@@ -40,4 +40,5 @@ public class WhatsappMessageServiceImpl implements SendWhatsappMessageService {
             throw new MessageNotSentException( "Error sending message: " + e.getMessage());
         }
     }
+
 }
