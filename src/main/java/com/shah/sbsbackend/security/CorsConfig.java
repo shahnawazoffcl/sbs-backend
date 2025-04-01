@@ -16,8 +16,8 @@ public class CorsConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")  // Allow all origins
-                .allowedOrigins("https://melodic-jelly-a38d33.netlify.app/")  // Replace with your Angular app URL
-                .allowedMethods("GET", "POST", "PUT")  // Allowed HTTP methods
+                .allowedOrigins("https://satnam-bike-service.netlify.app")  // Replace with your Angular app URL
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "PATCH")  // Allowed HTTP methods
                 .allowedHeaders("*")
                 .allowCredentials(true)  // Allow cookies and credentials
                 .maxAge(3600);  // Max validity of CORS pre-flight request

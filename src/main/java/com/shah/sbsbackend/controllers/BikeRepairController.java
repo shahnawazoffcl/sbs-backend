@@ -30,7 +30,7 @@ public class BikeRepairController {
                 }
                 String serv = bikeRepairServiceService.processBooking(bikeRepair);
                 log.info(serv);
-                return ResponseEntity.ok(serv);
+                return ResponseEntity.ok("");
             } catch (Exception e) {
                 throw new IllegalArgumentException("Invalid request");
             }
