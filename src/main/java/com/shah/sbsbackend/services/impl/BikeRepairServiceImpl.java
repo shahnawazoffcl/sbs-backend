@@ -24,11 +24,9 @@ public class BikeRepairServiceImpl implements BikeRepairService {
     private String sendWhatsappMessage;
 
     private final BikeRepairRepo serviceRepo;
-    private final SendWhatsappMessageService sendWhatsappMessageService;
 
-    public BikeRepairServiceImpl(BikeRepairRepo serviceRepo, SendWhatsappMessageService sendWhatsappMessageService) {
+    public BikeRepairServiceImpl(BikeRepairRepo serviceRepo) {
         this.serviceRepo = serviceRepo;
-        this.sendWhatsappMessageService = sendWhatsappMessageService;
     }
 
     @Override
@@ -41,12 +39,12 @@ public class BikeRepairServiceImpl implements BikeRepairService {
             bookService(service);
             if (sendWhatsappMessage.equals("yes")) {
                 log.info("Booking BikeRepair Service sendWhatsappMessage starting");
-                String s = sendWhatsappMessageService.sendWhatsappMessage(service.getContactNo(), "Hi Asnad, a new service has been received for vehicle " + service.getBikeModel() + ", to be serviced on " + service.getPreferredTime() + ".");
-                log.info("Message Id: {}", s);
-                Message fetchedMessage = Message.fetcher(s).fetch();
-                if (fetchedMessage.getStatus().equals(Message.Status.FAILED) || fetchedMessage.getStatus().equals(Message.Status.UNDELIVERED)) {
-                    throw new MessageNotSentException("Error sending message: " + fetchedMessage.getErrorMessage());
-                }
+//                String s = sendWhatsappMessageService.sendWhatsappMessage(service.getContactNo(), "Hi Asnad, a new service has been received for vehicle " + service.getBikeModel() + ", to be serviced on " + service.getPreferredTime() + ".");
+//                log.info("Message Id: {}", s);
+//                Message fetchedMessage = Message.fetcher(s).fetch();
+//                if (fetchedMessage.getStatus().equals(Message.Status.FAILED) || fetchedMessage.getStatus().equals(Message.Status.UNDELIVERED)) {
+//                    throw new MessageNotSentException("Error sending message: " + fetchedMessage.getErrorMessage());
+//                }
             }
         } catch (MessageNotSentException e) {
             log.error("Message not sent", e);
