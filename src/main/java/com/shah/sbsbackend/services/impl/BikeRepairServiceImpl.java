@@ -35,9 +35,10 @@ public class BikeRepairServiceImpl implements BikeRepairService {
     public String processBooking(BikeRepair service) {
         log.info("Booking BikeRepair Service starts");
         try {
-            bookService(service);
+
             String formattedDate = getString(service);
             service.setPreferredTime(formattedDate);
+            bookService(service);
             if (sendWhatsappMessage.equals("yes")) {
                 log.info("Booking BikeRepair Service sendWhatsappMessage starting");
                 String s = sendWhatsappMessageService.sendWhatsappMessage(service.getContactNo(), "Hi Asnad, a new service has been received for vehicle " + service.getBikeModel() + ", to be serviced on " + service.getPreferredTime() + ".");
@@ -61,7 +62,7 @@ public class BikeRepairServiceImpl implements BikeRepairService {
         dateStr = dateStr.replaceAll("\\(.*\\)", "").trim();
         dateStr = dateStr.replace("GMT", "").trim();
         SimpleDateFormat inputFormat = new SimpleDateFormat("EEE MMM dd yyyy HH:mm:ss zzz");
-        SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date date = inputFormat.parse(dateStr);
         return outputFormat.format(date);
     }
