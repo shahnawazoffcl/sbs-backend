@@ -13,16 +13,16 @@ import com.twilio.rest.api.v2010.account.Message;
 @Service
 public class WhatsappMessageServiceImpl implements SendWhatsappMessageService {
 
-    @Value("${twilio.authToken}")
+//    @Value("${twilio.authToken}")
     private String AUTH_TOKEN;
 
-    @Value("${twilio.accountSid}")
+//    @Value("${twilio.accountSid}")
     private String ACCOUNT_SID;
 
-    @Value("${twilio.from}")
+//    @Value("${twilio.from}")
     private String WHATSAPP_NUMBER;
 
-    @Value("${twilio.to}")
+//    @Value("${twilio.to}")
     private String TO_NUMBER;
 
     @Override
